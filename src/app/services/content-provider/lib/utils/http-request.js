@@ -1,9 +1,14 @@
 export default {
-  makeXhrRequest(method, url, data, options, done, error) {
+  makeXhr(method, url, data, options, done, error) {
     const xhr = new XMLHttpRequest();
+    const defaultHeaders = { 'Content-type' : 'application/json' };
+    const headers = Object.assign({}, defaultHeaders, options.headers);
 
     xhr.open(method, url, true);
-    xhr.setRequestHeader('Content-type', options && options.contentType || 'application/json');
+
+    for (const headerKey in headers) {
+      xhr.setRequestHeader(headerKey, headers[headerKey]);
+    }
 
     xhr.onload = function () {
       try {
@@ -19,7 +24,7 @@ export default {
     xhr.send(data);
   },
 
-  sendRequest(method, url, data, options) {
-    return new Promise((resolve, reject) => this.makeXhrRequest(method, url, data, options, resolve, reject));
+  sendRequest(method, url, data, options = {}) {
+    return new Promise((resolve, reject) => this.makeXhr(method, url, data, options, resolve, reject));
   }
 };

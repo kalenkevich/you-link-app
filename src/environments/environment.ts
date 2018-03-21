@@ -6,14 +6,8 @@
 export const environment = {
   production: false,
   ContentProvider: {
-    YouTube: {
-      apiKey: 'AIzaSyDv38BhSNeqGtx1y8Oi_hNUG6_KTTC8W8s',
-    },
-    Bing: {
-      apiKey: ''
-    },
-    Instagram: {
-      apiKey: ''
-    }
+    YouTube: {apiKey: 'AIzaSyDv38BhSNeqGtx1y8Oi_hNUG6_KTTC8W8s'},
+    Bing: {apiKey: 'd53b7f611fd14b2a98156fca53cf2f1f'},
+    Twitter: {apiKey: 'GAndHIHTczfYnu6AljUz3aNIZ'}
   }
 };

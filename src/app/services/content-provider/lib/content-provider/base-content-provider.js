@@ -1,9 +1,13 @@
-import HttpRequest from "../utils/http-request";
-
 export default class BaseContentProvider {
   constructor(options) {
     this.canSearch = options.searchEnabled || true;
     this.canGetByUrl = options.getByUrlEnabled || true;
+
+    if (!options.apiKey) {
+      throw 'ApiKey should be provided';
+    }
+
+    this.apiKey = options.apiKey;
   }
 
   async search(searchOptions) {
@@ -13,17 +17,26 @@ export default class BaseContentProvider {
   }
 
   async getByUrl(url) {
-    const videoId = this.parseVideoId(url);
-    const result = await this.sendGetVideoByIdRequest(videoId);
+    const contentId = this.parseContentId(url);
 
-    return this.adaptContent(result);
+    if (contentId) {
+      const result = await this.sendGetContentByIdRequest(contentId);
+
+      return this.adaptContent(result);
+    }
+
+    return Promise.resolve([]);
+  }
+
+  get providerId() {
+    throw 'should be overridden';
   }
 
   sendSearchRequest() {
     throw 'should be overridden';
   }
 
-  sendGetVideoByIdRequest() {
+  sendGetContentByIdRequest() {
     throw 'should be overridden';
   }
 
@@ -31,7 +44,7 @@ export default class BaseContentProvider {
     throw 'should be overridden';
   }
 
-  parseVideoId() {
+  parseContentId() {
     throw 'should be overridden';
   }
 }

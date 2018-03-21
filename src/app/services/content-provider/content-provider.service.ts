@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import Content from '../../models/content';
 import {environment} from '../../../environments/environment';
-import YouLink, {YoutubeProviderId, BingProviderId, InstagramProviderId} from './lib';
+import YouLink, {YoutubeProviderId, BingProviderId, TwitterProviderId} from './lib';
 
 @Injectable()
 export class ContentProviderService {
@@ -19,8 +19,8 @@ export class ContentProviderService {
       searchEnabled: true,
       getByUrlEnabled: true
     }, {
-      contentProvider: InstagramProviderId,
-      apiKey: environment.ContentProvider.Instagram.apiKey,
+      contentProvider: TwitterProviderId,
+      apiKey: environment.ContentProvider.Twitter.apiKey,
       searchEnabled: false,
       getByUrlEnabled: true
     }]);
