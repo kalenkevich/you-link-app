@@ -1,3 +1,5 @@
+import HttpRequest from "../utils/http-request";
+
 export default class BaseContentProvider {
   constructor(options) {
     this.canSearch = options.searchEnabled || true;
@@ -5,20 +7,31 @@ export default class BaseContentProvider {
   }
 
   async search(searchOptions) {
-    const result = await this.sendRequest(searchOptions);
+    const result = await this.sendSearchRequest(searchOptions);
 
     return this.adaptContent(result);
   }
 
-  getByUrl() {
+  async getByUrl(url) {
+    const videoId = this.parseVideoId(url);
+    const result = await this.sendGetVideoByIdRequest(videoId);
+
+    return this.adaptContent(result);
+  }
+
+  sendSearchRequest() {
     throw 'should be overridden';
   }
 
-  sendRequest() {
+  sendGetVideoByIdRequest() {
     throw 'should be overridden';
   }
 
   adaptContent() {
+    throw 'should be overridden';
+  }
+
+  parseVideoId() {
     throw 'should be overridden';
   }
 }

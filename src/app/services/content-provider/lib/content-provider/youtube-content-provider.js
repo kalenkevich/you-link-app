@@ -1,5 +1,6 @@
 import BaseContentProvider from './base-content-provider';
 import HttpRequest from '../utils/http-request';
+import getYouTubeID from 'get-youtube-id';
 
 const providerId = 'YouTube';
 
@@ -10,12 +11,16 @@ export default class YouTubeContentProvider extends BaseContentProvider {
     this.apiKey = options.apiKey;
   }
 
-  sendRequest({searchQuery}) {
-    return HttpRequest.sendRequest('GET', `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchQuery}&key=${this.apiKey}`)
+  sendSearchRequest({searchQuery}) {
+    return HttpRequest.sendRequest('GET', `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchQuery}&key=${this.apiKey}`);
   }
 
-  getByUrl() {
+  sendGetVideoByIdRequest(videoId) {
+    return HttpRequest.sendRequest('GET', `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${this.apiKey}`);
+  }
 
+  parseVideoId(url) {
+    return getYouTubeID(url, { fazzy: true });
   }
 
   adaptContent(contentsRaw = []) {
