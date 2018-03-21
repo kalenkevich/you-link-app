@@ -1,0 +1,12 @@
+<div *ngIf="contents.length; else emptyResultLabel" class="content-previewer-container">
+    <app-content-preview-item
+      *ngFor="let content of contents"
+      [content]="content"
+      (click)="onClick($event)"
+    >
+    </app-content-preview-item>
+
+  <ng-template #emptyResultLabel>
+    <span class="label">No any content</span>
+  </ng-template>
+</div>

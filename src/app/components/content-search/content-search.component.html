@@ -1,0 +1,18 @@
+<div class="content-search-container">
+  <app-search-bar
+    (search)="onSearch($event)"
+  >
+  </app-search-bar>
+
+  <app-content-previewer
+    *ngIf="isDataLoaded; else spinner"
+    [contents]="contents"
+    (click)="onContentPreviewClick($event)"
+  >
+  </app-content-previewer>
+</div>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
+

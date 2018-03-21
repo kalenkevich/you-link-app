@@ -1,0 +1,43 @@
+.content-preview-item-container {
+  display: flex;
+  flex-direction: column;
+  width: 225px;
+  height: 320px;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius: 3px;
+  margin: 10px;
+  font-family: arial, sans-serif;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba(0,0,0,.05);
+  }
+
+  .preview-image {
+    .image {
+      width: 210px;
+      height: 170px;
+      object-fit: cover;
+    }
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 15px;
+  }
+
+  .author {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .date {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+}

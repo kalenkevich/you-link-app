@@ -1,0 +1,11 @@
+.content-search-container {
+  display: flex;
+  flex-direction: column;
+  margin: 250px auto;
+
+  max-width: 1000px;
+
+  app-content-previewer {
+    margin-top: 20px;
+  }
+}
