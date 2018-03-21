@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import Content from '../../models/content';
 import {environment} from '../../../environments/environment';
-import YouLink, {YoutubeProviderId, BingProviderId, TwitterProviderId} from './lib';
+import YouLink, {YoutubeProviderId, BingProviderId} from 'you-link';
 
 @Injectable()
 export class ContentProviderService {
@@ -11,22 +11,10 @@ export class ContentProviderService {
     YouLink.init([{
       contentProvider: YoutubeProviderId,
       apiKey: environment.ContentProvider.YouTube.apiKey,
-      searchEnabled: true,
-      getByUrlEnabled: true
     }, {
       contentProvider: BingProviderId,
       apiKey: environment.ContentProvider.Bing.apiKey,
-      searchEnabled: true,
-      getByUrlEnabled: true
-    },
-    //   {
-    //   contentProvider: TwitterProviderId,
-    //   consumerKey: environment.ContentProvider.Twitter.consumerKey,
-    //   consumerSecret: environment.ContentProvider.Twitter.consumerSecret,
-    //   searchEnabled: false,
-    //   getByUrlEnabled: true
-    // }
-    ]);
+    }]);
   }
 
   search(searchOptions): Observable<Content[]> {

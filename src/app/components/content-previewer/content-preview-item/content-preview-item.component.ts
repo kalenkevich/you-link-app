@@ -11,7 +11,7 @@ export class ContentPreviewItemComponent implements OnInit {
   content: Content;
 
   @Output()
-  click = new EventEmitter<Content>();
+  contentItemClick = new EventEmitter<Content>();
 
   constructor() { }
 
@@ -19,6 +19,6 @@ export class ContentPreviewItemComponent implements OnInit {
   }
 
   onCLick() {
-    this.click.emit(this.content);
+    this.contentItemClick.emit(this.content);
   }
 }

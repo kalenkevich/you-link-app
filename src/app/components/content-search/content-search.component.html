@@ -12,7 +12,7 @@
   <app-content-previewer
     *ngIf="isDataLoaded; else spinner"
     [contents]="contents"
-    (click)="onContentPreviewClick($event)"
+    (contentItemClick)="onContentPreviewClick($event)"
   >
   </app-content-previewer>
 </div>

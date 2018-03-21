@@ -11,7 +11,7 @@ export class ContentPreviewerComponent implements OnInit {
   contents: Content[];
 
   @Output()
-  click = new EventEmitter<Content>();
+  contentItemClick = new EventEmitter<Content>();
 
   constructor() {
     this.contents = [];
@@ -21,6 +21,6 @@ export class ContentPreviewerComponent implements OnInit {
   }
 
   onClick(content) {
-    this.click.emit(content);
+    this.contentItemClick.emit(content);
   }
 }
