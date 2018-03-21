@@ -1,4 +1,8 @@
-<div class="content-preview-item-container" title="{{content.description}}">
+<div
+  (click)="onCLick($event)"
+  class="content-preview-item-container"
+  title="{{content.description}}"
+>
   <div class="preview-image">
     <img class="image" src={{content.preview.imageUrl}}/>
   </div>

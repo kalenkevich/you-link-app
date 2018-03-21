@@ -1,11 +1,10 @@
 .content-search-container {
   display: flex;
   flex-direction: column;
-  margin: 50px auto;
-
+  margin: 20px auto;
   max-width: 1000px;
 
-  app-content-previewer {
+  app-search-bar, app-content-previewer {
     margin-top: 20px;
   }
 }

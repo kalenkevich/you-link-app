@@ -1,11 +1,18 @@
 import BaseContentProvider from './base-content-provider';
 import HttpRequest from "../utils/http-request";
+import getYouTubeID from "get-youtube-id";
 
 const providerId = 'Bing';
 
 export default class BingContentProvider extends BaseContentProvider {
   constructor(options) {
     super(...arguments);
+
+    if (!options.apiKey) {
+      throw 'ApiKey should be provided';
+    }
+
+    this.apiKey = options.apiKey;
   }
 
   get providerId() {
@@ -31,11 +38,13 @@ export default class BingContentProvider extends BaseContentProvider {
     return (contentsRaw.value || []).map(contentRaw => {
       const content = {};
 
+      const videoId  = getYouTubeID(contentRaw.contentUrl, { fazzy: true });
+
       content.type = 'video';
       content.title = contentRaw.name;
       content.provider = providerId;
-      content.id = contentRaw.videoId;
-      content.ulr = content.contentUrl;
+      content.id = videoId;
+      content.ulr = contentRaw.contentUrl;
       content.preview = {
         imageUrl: contentRaw.thumbnailUrl,
         width: contentRaw.thumbnail.width,

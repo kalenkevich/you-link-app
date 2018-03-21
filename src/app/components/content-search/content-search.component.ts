@@ -13,12 +13,12 @@ export class ContentSearchComponent implements OnInit {
 
   isDataLoaded: boolean;
 
-  selectedContent: Content;
+  selectedContentItem: Content;
 
   constructor(private contentProvider: ContentProviderService) {
     this.contents = [];
     this.isDataLoaded = true;
-    this.selectedContent = null;
+    this.selectedContentItem = null;
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class ContentSearchComponent implements OnInit {
   }
 
   onContentPreviewClick(contentItem: Content) {
-    this.selectedContent = contentItem;
+    this.selectedContentItem = contentItem;
   }
 
   search(searchQuery) {

@@ -7,6 +7,12 @@ const providerId = 'YouTube';
 export default class YouTubeContentProvider extends BaseContentProvider {
   constructor(options) {
     super(...arguments);
+
+    if (!options.apiKey) {
+      throw 'ApiKey should be provided';
+    }
+
+    this.apiKey = options.apiKey;
   }
 
   get providerId() {
@@ -32,7 +38,7 @@ export default class YouTubeContentProvider extends BaseContentProvider {
       content.type = 'video';
       content.title = contentRaw.snippet.title;
       content.provider = providerId;
-      content.id = contentRaw.id.videoId;
+      content.id = contentRaw.id.videoId || contentRaw.id;
       content.ulr = `https://youtube.com/watch?v=${contentRaw.id.videoId}`;
       content.preview = {
         imageUrl: contentRaw.snippet.thumbnails.high.url,

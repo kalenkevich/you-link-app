@@ -1,4 +1,9 @@
 <div class="content-search-container">
+  <app-content-view-placeholder
+    [content]="selectedContentItem"
+  >
+  </app-content-view-placeholder>
+
   <app-search-bar
     (search)="onSearch($event)"
   >

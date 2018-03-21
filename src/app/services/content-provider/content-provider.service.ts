@@ -18,12 +18,15 @@ export class ContentProviderService {
       apiKey: environment.ContentProvider.Bing.apiKey,
       searchEnabled: true,
       getByUrlEnabled: true
-    }, {
-      contentProvider: TwitterProviderId,
-      apiKey: environment.ContentProvider.Twitter.apiKey,
-      searchEnabled: false,
-      getByUrlEnabled: true
-    }]);
+    },
+    //   {
+    //   contentProvider: TwitterProviderId,
+    //   consumerKey: environment.ContentProvider.Twitter.consumerKey,
+    //   consumerSecret: environment.ContentProvider.Twitter.consumerSecret,
+    //   searchEnabled: false,
+    //   getByUrlEnabled: true
+    // }
+    ]);
   }
 
   search(searchOptions): Observable<Content[]> {

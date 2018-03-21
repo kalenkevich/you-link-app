@@ -2,12 +2,6 @@ export default class BaseContentProvider {
   constructor(options) {
     this.canSearch = options.searchEnabled || true;
     this.canGetByUrl = options.getByUrlEnabled || true;
-
-    if (!options.apiKey) {
-      throw 'ApiKey should be provided';
-    }
-
-    this.apiKey = options.apiKey;
   }
 
   async search(searchOptions) {

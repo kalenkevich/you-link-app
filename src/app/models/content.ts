@@ -32,4 +32,8 @@ export default class Content {
     this.description = contentRaw.description;
     this.author = contentRaw.author;
   }
+
+  get isVideo() {
+    return this.type === 'video';
+  }
 }

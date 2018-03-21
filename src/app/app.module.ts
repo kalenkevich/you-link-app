@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 import { AppComponent } from './app.component';
 import { ContentSearchComponent } from './components/content-search/content-search.component';
@@ -10,6 +11,8 @@ import { ContentPreviewItemComponent } from './components/content-previewer/cont
 import {ContentProviderService} from './services/content-provider/content-provider.service';
 import {UtilsService} from './services/utils/utils.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ContentViewPlaceholderComponent } from './components/content-view-placeholder/content-view-placeholder.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 
 @NgModule({
@@ -19,11 +22,14 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     SearchBarComponent,
     ContentPreviewerComponent,
     ContentPreviewItemComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ContentViewPlaceholderComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    YoutubePlayerModule
   ],
   providers: [
     ContentProviderService,
