@@ -27,7 +27,7 @@
     "@angular/compiler-cli": "^5.2.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
-    "you-link": "1.0.10",
+    "you-link": "1.0.11",
     "typescript": "~2.5.3",
     "express": "^4.16.3",
     "zone.js": "^0.8.19"

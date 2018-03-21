@@ -10,10 +10,10 @@ export class ContentProviderService {
   constructor() {
     YouLink.init([{
       contentProvider: YoutubeProviderId,
-      apiKey: environment.ContentProvider.YouTube.apiKey,
+      apiKey: environment.ContentProvider.YouTube.apiKey
     }, {
       contentProvider: BingProviderId,
-      apiKey: environment.ContentProvider.Bing.apiKey,
+      apiKey: environment.ContentProvider.Bing.apiKey
     }]);
   }
 
